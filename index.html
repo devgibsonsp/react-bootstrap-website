@@ -13,7 +13,8 @@
 <!-- Import the React, React-Dom and Babel libraries from unpkg -->
   <script type="application/javascript" src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
   <script type="application/javascript" src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
-  <script type="application/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+	<script type="application/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+	
 </head>
 <body>
 	<!-- website header -->
@@ -36,101 +37,109 @@
 		<!-- javascript -->
 		<div id="root"></div>
 		<script type="text/babel">
-	const rootElement = document.getElementById('root')
-	// Create a ES6 class component    
-			class ShoppingList extends React.Component { 
-				
-	// Use the render function to return JSX component      
-			render() { 
-					return (
-					<div>
-						<main class="container">
-		
-		
+			const rootElement = document.getElementById('root')
 
-		<div class="jumbotron">
+			class ShoppingList extends React.Component {   
 
-		  <h1>Website Name</h1>
-		</div>
-		
-
-	  <h2>Web Page Name</h2>
-	  
-	  
-	  <h3>Level 3 heading</h3>
-	  
-	  <p>This is a paragraph that is not in a section.</p>
-	  	
-	  <section>
-		  <h3>Section heading</h3>
-		  <p>
-			  This is a paragraph inside of a section
-		  </p>
-	  </section>
-	  
-	  
-	  <ul>
-		  <li>2016
-		  	<ul>
-			  	<li>Fall
-			  		<ol>
-				  		<li>CSIS-110</li>
-				  		<li>MATH-110</li>
-				  		<li>FYSM-100</li>
-				  		<li>HIST-103</li>
-				  		<li>ENGL-101</li>
-			  		</ol>
-			  	</li>
-			  	<li>Spring
-			  		<ol>
-				  		<li>CSIS-120</li>
-				  		<li>MATH-120</li>
-				  		<li>FYSM-101</li>
-				  		<li>ECON-103</li>
-				  		<li>PHIL-101</li>
-			  		</ol>
-			  	</li>
-		  	</ul>
-		  </li>
-		  <li>2014
-		  	<ul>
-			  	<li>Fall
-			  		<ol>
-				  		<li>CSIS-210</li>
-				  		<li>MATH-250</li>
-				  		<li>CREA-101</li>
-				  		<li>CSIS-220</li>
-				  		<li>RELG-104</li>
-			  		</ol>
-			  	</li>
-			  	<li>Spring
-			  		<ol>
-				  		<li>CSIS-225</li>
-				  		<li>MATH-350</li>
-				  		<li>CSIS-385</li>
-				  		<li>MGMT-211</li>
-				  		<li>CSIS-390</li>
-			  		</ol>
-			  	</li>
-		  	</ul>
-		  </li>
-	  </ul>
-	</main>
-	
+				renderWebpageName = () => (
+					<div class="jumbotron">
+						<h1>Website Name</h1>
 					</div>
-				);
+				)
+				
+				renderSectionHeading = () => (
+							<section>
+										<h3>Section heading</h3>
+										<p>
+												This is a paragraph inside of a section
+										</p>
+									</section>
+				)
+
+				renderList = () => (
+					<ul>
+						<li>
+								2016
+								<ul>
+									<li>
+											Fall
+											<ol>
+												<li>CSIS-110</li>
+												<li>MATH-110</li>
+												<li>FYSM-100</li>
+												<li>HIST-103</li>
+												<li>ENGL-101</li>
+											</ol>
+									</li>
+									<li>
+											Spring
+											<ol>
+												<li>CSIS-120</li>
+												<li>MATH-120</li>
+												<li>FYSM-101</li>
+												<li>ECON-103</li>
+												<li>PHIL-101</li>
+											</ol>
+									</li>
+								</ul>
+						</li>
+						<li>
+								2014
+								<ul>
+									<li>
+											Fall
+											<ol>
+												<li>CSIS-210</li>
+												<li>MATH-250</li>
+												<li>CREA-101</li>
+												<li>CSIS-220</li>
+												<li>RELG-104</li>
+											</ol>
+									</li>
+									<li>
+											Spring
+											<ol>
+												<li>CSIS-225</li>
+												<li>MATH-350</li>
+												<li>CSIS-385</li>
+												<li>MGMT-211</li>
+												<li>CSIS-390</li>
+											</ol>
+									</li>
+								</ul>
+						</li>
+					</ul>
+				)
+
+				renderMainSection = () => (
+					<main class="container">
+						{this.renderWebpageName()}
+						<h2>Web Page Name</h2>
+						<h3>Level 3 heading</h3>
+						<p>This is a paragraph that is not in a section.</p>
+						{this.renderSectionHeading()}
+						{this.renderList()}
+					</main>
+				)
+					
+				render() { 
+					return (
+						<div>
+							{this.renderMainSection()}
+						</div>
+					);
 				} 
 			}
-	// Create a function to wrap up your component
-	function App(){
-		return(
-		<div>
-			<ShoppingList name="@luispagarcia on Dev.to!"/>
-		</div>
-		)
-	}
+
+			function App(){
+				return(
+				<div>
+					<ShoppingList name="@luispagarcia on Dev.to!"/>
+				</div>
+				)
+			}
 	
-	ReactDOM.render(
+			ReactDOM.render(
 				<App />,
 				rootElement
 			)
@@ -139,22 +148,21 @@
 
 		<!--  website footer   -->
 		<footer>
-				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="resume.html">Resume</a></li>
-				</ul>
-				<p>
-					&copy; 2019 Yourname<br>
-					Built with <a href="https://getbootstrap.com/">Bootstrap 4</a><br>
-					<small>Valid HTML5 + ARIA + SVG 1.1 + MathML 2.0</small>
-				</p>
-			</footer>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="resume.html">Resume</a></li>
+			</ul>
+			<p>
+				&copy; 2019 Yourname<br>
+				Built with <a href="https://getbootstrap.com/">Bootstrap 4</a><br>
+				<small>Valid HTML5 + ARIA + SVG 1.1 + MathML 2.0</small>
+			</p>
+		</footer>
 
-<script src="vendor/bootstrap/scripts/jquery.min.js"></script>
-<script src="vendor/bootstrap/scripts/popper.min.js"></script>
-<script src="vendor/bootstrap/scripts/bootstrap.min.js"></script>
+		<script src="vendor/bootstrap/scripts/jquery.min.js"></script>
+		<script src="vendor/bootstrap/scripts/popper.min.js"></script>
+		<script src="vendor/bootstrap/scripts/bootstrap.min.js"></script>
 
-	
 	</body>
 
 </html>
