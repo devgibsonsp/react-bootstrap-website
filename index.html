@@ -1,168 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>CSIS-390 - Project 1</title>
-<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="style/custom.css">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>React Local</title>
-<!-- Import the React, React-Dom and Babel libraries from unpkg -->
+	<title>CSIS-390 - Project 1</title>
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style/custom.css">
   <script type="application/javascript" src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
   <script type="application/javascript" src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
 	<script type="application/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
-	
 </head>
 <body>
-	<!-- website header -->
-	<header>
-			<!-- website navbar -->
-			<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-				<a class="navbar-brand" href="index.html">CSIS-390</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainnav" 
-								aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="mainnav">
-					<div class="navbar-nav">
-						<a class="nav-item nav-link active" href="index.html">Home</a>
-						<a class="nav-item nav-link" href="resume.html">Resume</a>
-					</div>
-				</div>
-			</nav>
-		</header>	
-		<!-- javascript -->
-		<div id="root"></div>
-		<script type="text/babel">
-			const rootElement = document.getElementById('root')
+	<div id="root"></div>
+	<script type="text/babel">
+		const rootElement = document.getElementById('root')
+		const classList = {
+			year1: {
+				year: 2017,
+				fall: ['CREA-200', 'CSIS-380', 'CSIS-410', 'HIST-101'],
+			},
+			year2: {
+				year: 2018,
+				spring: ['CSIS-351', 'CSIS-415', 'PHIL-101', 'SCDV-480'],
+				fall: ['CSIS-499', 'CSIS-499', 'CSIS-315', 'SCDV-001', 'SCDV-480'],
+			},
+			year3: {
+				year: 2019,
+				spring: ['CREA-101', 'CSIS-225', 'CSIS-390', 'ENGL-101', 'SCDV-001'],
+			}
+		}
 
-			class ShoppingList extends React.Component {   
+		const homeButtonStyle = {
+				color: 'white'
+			}
 
-				renderWebpageName = () => (
-					<div class="jumbotron">
-						<h1>Website Name</h1>
-					</div>
-				)
-				
-				renderSectionHeading = () => (
-							<section>
-										<h3>Section heading</h3>
-										<p>
-												This is a paragraph inside of a section
-										</p>
-									</section>
-				)
+		const footerStyle = {
+			color: '#0056b3'
+		}
 
-				renderList = () => (
-					<ul>
-						<li>
-								2016
-								<ul>
-									<li>
-											Fall
-											<ol>
-												<li>CSIS-110</li>
-												<li>MATH-110</li>
-												<li>FYSM-100</li>
-												<li>HIST-103</li>
-												<li>ENGL-101</li>
-											</ol>
-									</li>
-									<li>
-											Spring
-											<ol>
-												<li>CSIS-120</li>
-												<li>MATH-120</li>
-												<li>FYSM-101</li>
-												<li>ECON-103</li>
-												<li>PHIL-101</li>
-											</ol>
-									</li>
-								</ul>
-						</li>
-						<li>
-								2014
-								<ul>
-									<li>
-											Fall
-											<ol>
-												<li>CSIS-210</li>
-												<li>MATH-250</li>
-												<li>CREA-101</li>
-												<li>CSIS-220</li>
-												<li>RELG-104</li>
-											</ol>
-									</li>
-									<li>
-											Spring
-											<ol>
-												<li>CSIS-225</li>
-												<li>MATH-350</li>
-												<li>CSIS-385</li>
-												<li>MGMT-211</li>
-												<li>CSIS-390</li>
-											</ol>
-									</li>
-								</ul>
-						</li>
-					</ul>
-				)
+		class ShoppingList extends React.Component {
+      constructor(props) {
+        super(props);
 
-				renderMainSection = () => (
-					<main class="container">
-						{this.renderWebpageName()}
-						<h2>Web Page Name</h2>
-						<h3>Level 3 heading</h3>
-						<p>This is a paragraph that is not in a section.</p>
-						{this.renderSectionHeading()}
-						{this.renderList()}
-					</main>
-				)
-					
-				render() { 
-					return (
-						<div>
-							{this.renderMainSection()}
+        this.state = {
+					homeToggle: true,
+          resumeToggle: false,
+          classListToggle: false,
+					aboutToggle: false,
+        }
+      }
+
+			renderNavbar = () => (
+				<header>
+					<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+						<a class="navbar-brand" style={homeButtonStyle} onClick={() =>(this.homeOnClick())}>CSIS-390</a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainnav" 
+									aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="mainnav">
+							<div class="navbar-nav">
+								<a class={this.state.aboutToggle ? "nav-item nav-link active" : "nav-item nav-link"} onClick={() =>(this.aboutOnClick())}>About</a>
+								<a class={this.state.resumeToggle ? "nav-item nav-link active" : "nav-item nav-link"} onClick={() =>(this.resumeOnClick())}>Resume</a>
+								<a class={this.state.classListToggle ? "nav-item nav-link active" : "nav-item nav-link"} onClick={() =>(this.classListOnClick())}>Courses</a>
+							</div>
 						</div>
-					);
-				} 
+					</nav>
+				</header>
+			)
+
+			aboutOnClick = () => {
+        this.setState({
+					homeToggle: false,
+					classListToggle: false,
+          resumeToggle: false,
+					aboutToggle: true,
+        });
 			}
 
-			function App(){
-				return(
-				<div>
-					<ShoppingList name="@luispagarcia on Dev.to!"/>
+      resumeOnClick = () => {
+        this.setState({
+					homeToggle: false,
+					classListToggle: false,
+          resumeToggle: true,
+					aboutToggle: false,
+        });
+      }
+
+      classListOnClick = () => {
+        this.setState({
+					homeToggle: false,
+          classListToggle: true,
+					resumeToggle: false,
+					aboutToggle: false,
+        });
+      }
+
+      homeOnClick = () => {
+        this.setState({
+					homeToggle: true,
+          classListToggle: false,
+					resumeToggle: false,
+					aboutToggle: false,
+        });
+      }
+
+			renderWebpageName = () => (
+				<div class="jumbotron">
+					<h1>Steve's Portfolio</h1>
 				</div>
+			)
+			
+			renderSectionHeading = () => (
+				<section>
+					<h3>Section heading</h3>
+					<p>
+						This is a paragraph inside of a section
+					</p>
+				</section>
+			)
+
+			renderCourseList = () => {
+				let ct = 0;
+				return (
+				<ul>
+					<li>
+							{classList.year1.year}
+							<ul>
+								<li>
+										Fall
+										<ol>
+											{classList.year1.fall.map(className => (
+												<li key={ct+=1}>{className}</li>
+											))}
+										</ol>
+								</li>
+							</ul>
+					</li>
+					<li>
+							{classList.year2.year}
+							<ul>
+								<li>
+										Fall
+										<ol>
+											{classList.year2.fall.map(className => (
+												<li key={ct+=1}>{className}</li>
+											))}
+										</ol>
+								</li>
+								<li>
+										Spring
+										<ol>
+											{classList.year2.spring.map(className => (
+												<li key={ct+=1}>{className}</li>
+											))}
+										</ol>
+								</li>
+							</ul>
+					</li>
+					<li>
+							{classList.year3.year}
+							<ul>
+								<li>
+										Fall
+										<ol>
+											{classList.year3.spring.map(className => (
+												<li key={ct+=1}>{className}</li>
+											))}
+										</ol>
+								</li>
+							</ul>
+					</li>
+				</ul>
 				)
 			}
-	
-			ReactDOM.render(
-				<App />,
-				rootElement
+
+			renderFooter = () => (
+				<footer>
+					<ul>
+						<li><a style={footerStyle} onClick={() =>(this.homeOnClick())}>Home</a></li>
+						<li><a style={footerStyle} onClick={() =>(this.aboutOnClick())}>About</a></li>
+						<li><a style={footerStyle} onClick={() =>(this.resumeOnClick())}>Resume</a></li>
+						<li><a style={footerStyle} onClick={() =>(this.classListOnClick())}>Courses</a></li>
+					</ul>
+					<p>
+						&copy; 2019 Steven Gibson<br/>
+						Built with <a href="https://getbootstrap.com/">Bootstrap 4</a><br/>
+						<small>Valid HTML5 + ARIA + SVG 1.1 + MathML 2.0</small>
+					</p>
+				</footer>
 			)
+
+			renderClassList = () => (
+				<div>
+					{this.renderWebpageName()}
+						<h2>These are all the cool classes I've taken at Siena College!</h2>
+						{this.renderSectionHeading()}
+						{this.renderCourseList()}
+				</div>
+			)
+
+
+			renderMainSection = () => (
+				<div>
+					{this.state.homeToggle ? this.renderHome() : 
+					<main class="container">
+						{this.state.classListToggle ? this.renderClassList() : null}
+						{this.state.resumeToggle ? this.renderResume() : null}
+						{this.state.aboutToggle ? this.renderAbout() : null}
+					</main>}
+					
+				</div>
+			)
+
+			// probably should use section tags???
+
+			renderResume = () => (
+				<div>
+					<h1>Steven Gibson</h1>
+					<p>60 State Street, Albany NY, 12207 ♦ 518-222-0760 ♦ devgibsonsp@gmail.com</p>
+					<h2>Education</h2>
+					<p>
+						Siena College, Loudonville, NY (GPA 3.68) <br/>
+						Bachelor of Science in Computer Science (May 2019) <br/><br/>
+						SUNY Adirondack, Queensbury, NY (GPA in-major 3.6)
+						Associate of Science in Computer Science (May 2015)
+					</p>
+					<h2>Skills</h2>
+					<p>
+						Topics: DevOps, Cloud Development, Continuous Integration, Continuous Development, 
+						Elasticsearch, Microsoft Azure, Kubernetes, Helm, Ansible, Docker, WebPack, Parcel, MongoDB, 
+						ExpressJS, HapiJS, ReactJS, Graphql, NodeJS, Jest, Enzyme, Selenium, RESTful APIs, Webhooks, 
+						SCSS, HTML5, SQL, Semantic UI, Linux, .NET, Windows Forms, Git, Agile, Scrum <br/><br/>
+						Software: Github, Gitlab, Zenhub, Jira, Confluence, PuTTY, Visual Studio, Visual Studio Code, 
+						Slack, Mattermost, Trello, Unity Engine, Unreal Engine, Oculus, Photoshop, Gimp, Blender, 
+						Sketchup, WebEx, ActiveCollab<br/><br/>
+						Languages: JavaScript, C#, Python, Java, PHP, C++, C, Assembly
+					</p>
+					<h2>Experience</h2>
+					<p>
+						Software Engineer - Conduent Legal & Compliance Solutions, Albany, NY <br/>
+						May 2018 - Present
+					</p>
+					<ul>
+						<li>Full Stack Engineer, responsible for front and back end development</li>
+						<li>Develop large scale web applications using agile development methodologies</li>
+						<li>Work closely with cross functional teams to coordinate the deployment of web applications</li>
+					</ul> <br/>
+					<p>
+						Software Developer Intern - SKS Bottle & Packaging, Watervliet, NY <br/>
+						Jan 2018 - May 2018
+					</p>
+					<ul>
+						<li>Developed and maintained web applications</li>
+						<li>Refactored legacy code to modernize web applications</li>
+						<li>Responded and delivered solutions to issues associated to client tickets</li>
+					</ul> <br/>
+					<p>
+						Web Developer - Curious Disposition Media, Queensbury, NY <br/>
+						June 2017 - Sept 2017
+					</p>
+					<ul>
+						<li>Designed and maintained site content</li>
+						<li>Managed social media accounts to promote content</li>
+						<li>Contributed to writing of articles for the site</li>
+					</ul> <br/>
+					<p>
+						Tutor & Teacher’s Aide - SUNY Adirondack, Queensbury, NY <br/>
+						Sept 2014 - May 2018
+					</p>
+					<ul>
+						<li>Tutored students in Computer Science, Mathematics, & Biology</li>
+						<li>Addressed questions and concerns as they arose to enhance student’s comprehension</li>
+						<li>Graded student programming assignments and assisted students during class</li>
+						<li>Instructed students on Introductory Computer Science topics</li>
+					</ul> <br/>
+				</div>
+			)
+
+			renderAbout = () => (
+				<div> I am home!!!! </div>
+			)
+
+			renderHome = () => (
+				<div class='home-page'>
+				<img id='home-picture' src="static/steve_and_elly.jpeg" alt="Steve and Elly" onClick={() =>(this.aboutOnClick())}></img>
+				</div>
+			)
+					
+			render() { 
+				return (
+					<div>
+            {this.renderNavbar()}
+						{this.renderMainSection()}
+            {this.renderFooter()}
+					</div>
+				);
+			}
+		}
+
+		function App(){
+			return(
+			<div>
+				<ShoppingList name="@luispagarcia on Dev.to!"/>
+			</div>
+			)
+		}
 	
-		</script>
-
-		<!--  website footer   -->
-		<footer>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="resume.html">Resume</a></li>
-			</ul>
-			<p>
-				&copy; 2019 Yourname<br>
-				Built with <a href="https://getbootstrap.com/">Bootstrap 4</a><br>
-				<small>Valid HTML5 + ARIA + SVG 1.1 + MathML 2.0</small>
-			</p>
-		</footer>
-
-		<script src="vendor/bootstrap/scripts/jquery.min.js"></script>
-		<script src="vendor/bootstrap/scripts/popper.min.js"></script>
-		<script src="vendor/bootstrap/scripts/bootstrap.min.js"></script>
-
-	</body>
-
+		ReactDOM.render(
+			<App />,
+			rootElement
+		)
+	</script>
+	<script src="vendor/bootstrap/scripts/jquery.min.js"></script>
+	<script src="vendor/bootstrap/scripts/popper.min.js"></script>
+	<script src="vendor/bootstrap/scripts/bootstrap.min.js"></script>
+</body>
 </html>

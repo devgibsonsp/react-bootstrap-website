@@ -35,3 +35,25 @@ footer li {
 		display: none;
 	}
 }
+
+a {
+	cursor: pointer;
+}
+
+a.navbar-brand {
+	color: white;
+}
+
+
+#home-picture {
+	padding:5%;
+	background-color: white;
+	cursor: pointer;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5%;
+	width: 50%;
+	border-radius: 0px 0px 12px 12px;
+
+}
