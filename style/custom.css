@@ -34,6 +34,21 @@ footer li {
 	nav {
 		display: none;
 	}
+	footer {
+		display: none;
+	}
+	.badge.badge-secondary {
+		display: none;
+	}
+	.resume-subsection {
+		font-size: 24pt;
+	}
+	.subsection {
+		font-size: 16pt;
+	}
+	.my-name {
+		font-size: 28pt;
+	}
 }
 
 a {
@@ -43,7 +58,6 @@ a {
 a.navbar-brand {
 	color: white;
 }
-
 
 #home-picture {
 	padding:5%;
@@ -57,3 +71,29 @@ a.navbar-brand {
 	border-radius: 0px 0px 12px 12px;
 
 }
+
+.experience {
+	margin: 2px;
+}
+
+.resume-header {
+	text-align: center;
+}
+
+.resume-header > h1, .resume-subsection {
+	font-weight: bolder;
+}
+
+.jumbotron {
+	background-image: url("../static/og-default.jpg");
+	background-position:  bottom 342px center; 
+}
+
+.course-list {
+	background-color: antiquewhite;
+}
+
+.interactive-hover:hover { 
+	background-color: rgb(224, 224, 224);
+	cursor: pointer;
+  }

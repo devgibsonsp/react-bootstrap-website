@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>CSIS-390 - Project 1</title>
 	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style/custom.css">
-  <script type="application/javascript" src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
-  <script type="application/javascript" src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
+	<script type="application/javascript" src="https://unpkg.com/react@16.0.0/umd/react.production.min.js"></script>
+	<script type="application/javascript" src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.production.min.js"></script>
 	<script type="application/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
 </head>
+
 <body>
 	<div id="root"></div>
 	<script type="text/babel">
@@ -39,7 +41,7 @@
 			color: '#0056b3'
 		}
 
-		class ShoppingList extends React.Component {
+		class Portfolio extends React.Component {
       constructor(props) {
         super(props);
 
@@ -68,7 +70,7 @@
 						</div>
 					</nav>
 				</header>
-			)
+      )
 
 			aboutOnClick = () => {
         this.setState({
@@ -108,15 +110,14 @@
 
 			renderWebpageName = () => (
 				<div class="jumbotron">
-					<h1>Steve's Portfolio</h1>
 				</div>
 			)
 			
 			renderSectionHeading = () => (
 				<section>
-					<h3>Section heading</h3>
+					<h3>My Educational Journey</h3>
 					<p>
-						This is a paragraph inside of a section
+						Since transferring back to Siena College in the fall of 2017, I have taken numerous interesting classes. Take a look!
 					</p>
 				</section>
 			)
@@ -124,8 +125,8 @@
 			renderCourseList = () => {
 				let ct = 0;
 				return (
-				<ul>
-					<li>
+				<ul class="list-group">
+					<li class="list-group-item course-list">
 							{classList.year1.year}
 							<ul>
 								<li>
@@ -138,7 +139,7 @@
 								</li>
 							</ul>
 					</li>
-					<li>
+					<li class="list-group-item course-list">
 							{classList.year2.year}
 							<ul>
 								<li>
@@ -159,7 +160,7 @@
 								</li>
 							</ul>
 					</li>
-					<li>
+					<li class="list-group-item course-list">
 							{classList.year3.year}
 							<ul>
 								<li>
@@ -217,76 +218,94 @@
 			// probably should use section tags???
 
 			renderResume = () => (
-				<div>
-					<h1>Steven Gibson</h1>
-					<p>60 State Street, Albany NY, 12207 ♦ 518-222-0760 ♦ devgibsonsp@gmail.com</p>
-					<h2>Education</h2>
-					<p>
-						Siena College, Loudonville, NY (GPA 3.68) <br/>
+				<div class="resume-section">
+					<span class="badge badge-secondary">Hover over sections!</span>
+					<div class="resume-header">
+						<h1 class="interactive-hover my-name" data-toggle="tooltip" data-placement="top" title="Hello! I am a Software Engineer">Steven Gibson</h1>
+						<p class="interactive-hover subsection" data-toggle="tooltip" data-placement="top" title="I live in Albany with my wife Elly and our two dogs.">60 State Street, Albany NY, 12207 ♦ 518-222-0760 ♦ devgibsonsp@gmail.com</p>
+					</div>
+					<h2 data-toggle="tooltip" data-placement="top" title="I have an Associates in Computer Science and am currently pursuing my Bachelors" class="resume-subsection interactive-hover">Education</h2>
+					<p class="subsection">
+						<strong class="interactive-hover" data-toggle="tooltip" data-placement="top" title="I am currently a student at Siena">Siena College</strong>, Loudonville, NY (GPA 3.68) <br/>
 						Bachelor of Science in Computer Science (May 2019) <br/><br/>
-						SUNY Adirondack, Queensbury, NY (GPA in-major 3.6)
+						<strong class="interactive-hover" data-toggle="tooltip" data-placement="top" title="I began my educational journey in 2013">SUNY Adirondack</strong>, Queensbury, NY (GPA in-major 3.6) <br/>
 						Associate of Science in Computer Science (May 2015)
 					</p>
-					<h2>Skills</h2>
-					<p>
-						Topics: DevOps, Cloud Development, Continuous Integration, Continuous Development, 
+					<h2 data-toggle="tooltip" data-placement="top" title="I have picked up a lot of skills over the last 6 years" class="resume-subsection interactive-hover">Skills</h2>
+          <p class="interactive-hover subsection" data-toggle="tooltip" data-placement="top" title="I love learning new skills!">
+						<strong>Topics:</strong> DevOps, Cloud Development, Continuous Integration, Continuous Development, 
 						Elasticsearch, Microsoft Azure, Kubernetes, Helm, Ansible, Docker, WebPack, Parcel, MongoDB, 
 						ExpressJS, HapiJS, ReactJS, Graphql, NodeJS, Jest, Enzyme, Selenium, RESTful APIs, Webhooks, 
 						SCSS, HTML5, SQL, Semantic UI, Linux, .NET, Windows Forms, Git, Agile, Scrum <br/><br/>
-						Software: Github, Gitlab, Zenhub, Jira, Confluence, PuTTY, Visual Studio, Visual Studio Code, 
+						<strong>Software:</strong> Github, Gitlab, Zenhub, Jira, Confluence, PuTTY, Visual Studio, Visual Studio Code, 
 						Slack, Mattermost, Trello, Unity Engine, Unreal Engine, Oculus, Photoshop, Gimp, Blender, 
 						Sketchup, WebEx, ActiveCollab<br/><br/>
-						Languages: JavaScript, C#, Python, Java, PHP, C++, C, Assembly
+						<strong>Languages:</strong> JavaScript, C#, Python, Java, PHP, C++, C, Assembly
 					</p>
-					<h2>Experience</h2>
-					<p>
-						Software Engineer - Conduent Legal & Compliance Solutions, Albany, NY <br/>
+					<h2 data-toggle="tooltip" data-placement="top" title="Since beginning my educational journey, I have had a lot of valuable experiences." class="resume-subsection interactive-hover experience">Experience</h2>
+          <div class="subsection">
+          <p data-toggle="tooltip" data-placement="top" title="At Conduent, I am challenged each day to solve interesting problems with new technologies" class="interactive-hover experience">
+						<strong>Software Engineer</strong> - Conduent Legal &amp; Compliance Solutions, Albany, NY <br/>
 						May 2018 - Present
 					</p>
 					<ul>
 						<li>Full Stack Engineer, responsible for front and back end development</li>
 						<li>Develop large scale web applications using agile development methodologies</li>
 						<li>Work closely with cross functional teams to coordinate the deployment of web applications</li>
-					</ul> <br/>
-					<p>
-						Software Developer Intern - SKS Bottle & Packaging, Watervliet, NY <br/>
+          </ul>
+          </div>
+          <div class="subsection">
+					<p data-toggle="tooltip" data-placement="top" title="SKS Bottle &amp; Packaging taught me a lot about how to be a great web developer" class="interactive-hover experience">
+						<strong>Software Developer Intern</strong> - SKS Bottle &amp; Packaging, Watervliet, NY <br/>
 						Jan 2018 - May 2018
 					</p>
 					<ul>
 						<li>Developed and maintained web applications</li>
 						<li>Refactored legacy code to modernize web applications</li>
 						<li>Responded and delivered solutions to issues associated to client tickets</li>
-					</ul> <br/>
-					<p>
-						Web Developer - Curious Disposition Media, Queensbury, NY <br/>
+          </ul>
+          </div>
+          <div class="subsection">
+					<p data-toggle="tooltip" data-placement="top" title="Curious Disposition was a project my wife and a few friends were involved with. It helped land me my internship!" class="interactive-hover experience">
+						<strong>Web Developer</strong> - Curious Disposition Media, Queensbury, NY <br/>
 						June 2017 - Sept 2017
 					</p>
 					<ul>
 						<li>Designed and maintained site content</li>
 						<li>Managed social media accounts to promote content</li>
 						<li>Contributed to writing of articles for the site</li>
-					</ul> <br/>
-					<p>
-						Tutor & Teacher’s Aide - SUNY Adirondack, Queensbury, NY <br/>
+          </ul>
+          </div>
+          <div class="subsection">
+					<p data-toggle="tooltip" data-placement="top" title="I loved the computer science department at SUNY Adirondack and spent several years as a tutor and TA there." class="interactive-hover experience">
+						<strong>Tutor &amp; Teacher’s Aide</strong> - SUNY Adirondack, Queensbury, NY <br/>
 						Sept 2014 - May 2018
 					</p>
 					<ul>
-						<li>Tutored students in Computer Science, Mathematics, & Biology</li>
+						<li>Tutored students in Computer Science, Mathematics, &amp; Biology</li>
 						<li>Addressed questions and concerns as they arose to enhance student’s comprehension</li>
 						<li>Graded student programming assignments and assisted students during class</li>
 						<li>Instructed students on Introductory Computer Science topics</li>
-					</ul> <br/>
+          </ul>
+          </div>
 				</div>
 			)
 
 			renderAbout = () => (
-				<div> I am home!!!! </div>
+				<div>
+					<span class="badge badge-dark">About me</span>
+					<div class="card-body">
+					<img id='me-picture' src="static/me.png" alt="Steven Gibson"></img>
+					<div class="card-body">My name is Steven Gibson! I love challenges and learning new skills! I turned this into a single page appplication using React!</div>
+					</div>
+				</div>
 			)
 
 			renderHome = () => (
 				<div class='home-page'>
 				<img id='home-picture' src="static/steve_and_elly.jpeg" alt="Steve and Elly" onClick={() =>(this.aboutOnClick())}></img>
 				</div>
+				
 			)
 					
 			render() { 
@@ -303,7 +322,7 @@
 		function App(){
 			return(
 			<div>
-				<ShoppingList name="@luispagarcia on Dev.to!"/>
+				<Portfolio/>
 			</div>
 			)
 		}
@@ -317,4 +336,5 @@
 	<script src="vendor/bootstrap/scripts/popper.min.js"></script>
 	<script src="vendor/bootstrap/scripts/bootstrap.min.js"></script>
 </body>
+
 </html>
